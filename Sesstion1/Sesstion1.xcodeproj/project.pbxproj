@@ -17,6 +17,8 @@
 		84ACA3911D7468C500CA1F2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84ACA3901D7468C500CA1F2D /* Assets.xcassets */; };
 		84ACA3941D7468C500CA1F2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84ACA3921D7468C500CA1F2D /* LaunchScreen.storyboard */; };
 		84ACA39C1D746F0200CA1F2D /* 1945-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 84ACA39B1D746F0200CA1F2D /* 1945-logo.png */; };
+		84C3695F1D819DCC00F4E7AE /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C3695E1D819DCC00F4E7AE /* bullet.png */; };
+		84C369611D81A63F00F4E7AE /* enemy_plane_white_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 84C369601D81A63F00F4E7AE /* enemy_plane_white_1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		84ACA3931D7468C500CA1F2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84ACA3951D7468C500CA1F2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84ACA39B1D746F0200CA1F2D /* 1945-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1945-logo.png"; sourceTree = "<group>"; };
+		84C3695E1D819DCC00F4E7AE /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		84C369601D81A63F00F4E7AE /* enemy_plane_white_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_plane_white_1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 				842F5EC51D748B31002DD5A7 /* background.png */,
 				84ACA39B1D746F0200CA1F2D /* 1945-logo.png */,
 				84AB2BE71D77080900967051 /* plane2.png */,
+				84C3695E1D819DCC00F4E7AE /* bullet.png */,
+				84C369601D81A63F00F4E7AE /* enemy_plane_white_1.png */,
 				84ACA3851D7468C500CA1F2D /* AppDelegate.swift */,
 				84ACA3891D7468C500CA1F2D /* GameScene.swift */,
 				84ACA38B1D7468C500CA1F2D /* GameViewController.swift */,
@@ -148,11 +154,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				84ACA3941D7468C500CA1F2D /* LaunchScreen.storyboard in Resources */,
+				84C3695F1D819DCC00F4E7AE /* bullet.png in Resources */,
 				842F5EC61D748B31002DD5A7 /* background.png in Resources */,
 				84ACA3911D7468C500CA1F2D /* Assets.xcassets in Resources */,
 				84AB2BE81D77080900967051 /* plane2.png in Resources */,
 				84ACA38F1D7468C500CA1F2D /* Main.storyboard in Resources */,
 				84ACA39C1D746F0200CA1F2D /* 1945-logo.png in Resources */,
+				84C369611D81A63F00F4E7AE /* enemy_plane_white_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +291,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Sesstion1/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hahalalamummy.Sesstion1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -296,7 +304,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Sesstion1/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hahalalamummy.Sesstion1;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -158,7 +158,7 @@ class GameScene: SKScene {
             // 6
             self.enemies.append(enemy)
         }
-        let periodEnemy = SKAction.sequence([enemyAppear, SKAction.waitForDuration(2)])
+        let periodEnemy = SKAction.sequence([enemyAppear, SKAction.waitForDuration(1.3)])
         self.runAction(SKAction.repeatActionForever(periodEnemy))
     }
     
@@ -173,7 +173,7 @@ class GameScene: SKScene {
         let shot = SKAction.runBlock {
             self.addBullet()
         }
-        let periodShot = SKAction.sequence([shot, SKAction.waitForDuration(0.5)])
+        let periodShot = SKAction.sequence([shot, SKAction.waitForDuration(0.3)])
         let shotForever = SKAction.repeatActionForever(periodShot)
         
         // 4

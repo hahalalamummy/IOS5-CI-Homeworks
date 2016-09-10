@@ -20,7 +20,7 @@ class GameScene: SKScene {
     var lastUpdateTime : NSTimeInterval = -1
     
     // Count
-    var count = 0
+    //var count = 0
     var bulletIntervalCount = 0
     var enemyIntervalCount = 0
     
@@ -28,8 +28,9 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         print("Did move to view")
-        self.addBackround()
+        self.addBackground()
         self.addPlane()
+        //self.addEnemy()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -74,6 +75,11 @@ class GameScene: SKScene {
             let deltaTime = currentTime - lastUpdateTime
             let deltaTimeInMilisecond = deltaTime * 1000
             if deltaTimeInMilisecond > 100 { // fix enemy period speed here
+                self.enemyIntervalCount += 1
+                if self.enemyIntervalCount > 6 {
+                    self.enemyIntervalCount = 0
+                    addEnemy()
+                }
 //                count+=1
 //                if count==1{
 //                    bulletIntervalCount = 0
@@ -82,12 +88,6 @@ class GameScene: SKScene {
 //                    lastTimeUpdate = currentTime
 //                }
 //                count=0
-                self.enemyIntervalCount += 1
-                if self.enemyIntervalCount > 6 {
-                    self.enemyIntervalCount = 0
-                    addEnemy()
-                }
-                
                 lastUpdateTime = currentTime
             }
         }
@@ -113,61 +113,53 @@ class GameScene: SKScene {
 //                bullet.position.y += 20
 //            }
 
-            for enemy in enemies{
-                //enemy.position.x += 10
-                enemy.position.y -= 1
-            }
+//            for enemy in enemies{
+//                //enemy.position.x += 10
+//                enemy.position.y -= 1
+//            }
         }
+//        for (bulletIndex, bullet) in bullets.enumerate(){
+//            let screenSize: CGRect = UIScreen.mainScreen().bounds
+//            let screenHeight = screenSize.height
+//            if bullet.position.y > screenHeight{
+//                bullets.removeAtIndex(bulletIndex)
+//            }
+//        }
+//        for (enemyIndex, enemy) in enemies.enumerate(){
+//            let screenSize: CGRect = UIScreen.mainScreen().bounds
+//            let screenHeight = screenSize.height
+//            if enemy.position.y < 0{
+//                enemies.removeAtIndex(enemyIndex)
+//            }
+//        }
     }
     
     func addEnemy() {
-        // 1
-        let enemy = SKSpriteNode(imageNamed: "enemy_plane_white_1.png")
-        
-        // 2
-        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        //let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        enemy.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.frame.maxX))), y: screenHeight)
-        
-        //3
-        addChild(enemy)
-        
-        //4
-        enemies.append(enemy)
-    }
-    
-    func addBullet() {
-        // 1
-        let bullet = SKSpriteNode(imageNamed: "bullet.png")
-        
-        // 2
-        bullet.position = plane.position
-        bullet.position.y += 50
-        
-        // 3
-        addChild(bullet)
-        
-        //4
-        let bulletFly = SKAction.moveByX(0, y: 30, duration: 0.1)
-        
-        //5
-        bullet.runAction(SKAction.repeatActionForever(bulletFly))
-        
-        // 6
-        bullets.append(bullet)
-    }
-    
-    func addBackround() {
-        // 1
-        let background = SKSpriteNode(imageNamed: "background.png")
-        
-        // 2
-        background.anchorPoint = CGPointZero
-        background.position=CGPointZero
-        
-        // 3
-        addChild(background)
+        print("add enemy")
+        let enemyAppear = SKAction.runBlock{
+            // 1
+            let enemy = SKSpriteNode(imageNamed: "enemy_plane_white_1.png")
+            
+            // 2
+            let screenSize: CGRect = UIScreen.mainScreen().bounds
+            //let screenWidth = screenSize.width
+            let screenHeight = screenSize.height
+            enemy.position = CGPoint(x: CGFloat(arc4random_uniform(UInt32(self.frame.maxX))), y: screenHeight)
+            
+            // 3
+            self.addChild(enemy)
+            
+            // 4
+            let enemyFly = SKAction.moveByX(0, y: -20, duration: 0.1)
+            
+            // 5
+            enemy.runAction(SKAction.repeatActionForever(enemyFly))
+            
+            // 6
+            self.enemies.append(enemy)
+        }
+        let periodEnemy = SKAction.sequence([enemyAppear, SKAction.waitForDuration(3)])
+        self.runAction(SKAction.repeatActionForever(periodEnemy))
     }
     
     func addPlane() -> Void {
@@ -191,11 +183,44 @@ class GameScene: SKScene {
         addChild(plane)
     }
     
+    func addBullet() {
+        // 1
+        let bullet = SKSpriteNode(imageNamed: "bullet.png")
+        
+        // 2
+        bullet.position = plane.position
+        bullet.position.y += 50
+        
+        // 3
+        addChild(bullet)
+        
+        //4
+        let bulletFly = SKAction.moveByX(0, y: 30, duration: 0.1)
+        
+        //5
+        bullet.runAction(SKAction.repeatActionForever(bulletFly))
+        
+        // 6
+        bullets.append(bullet)
+    }
+    
+    
     //    func addCGPoint(p1: CGPoint, p2: CGPoint) -> CGPoint {
     //        let dx = p1.x - p2.x
     //        let dy = p1.y - p2.y
     //        return CGPoint(x: dx, y: dy)
     //    }
     
+    func addBackground() {
+        // 1
+        let background = SKSpriteNode(imageNamed: "background.png")
+        
+        // 2
+        background.anchorPoint = CGPointZero
+        background.position=CGPointZero
+        
+        // 3
+        addChild(background)
+    }
     
 }

@@ -30,7 +30,7 @@ class GameScene: SKScene {
         print("Did move to view")
         self.addBackground()
         self.addPlane()
-        //self.addEnemy()
+        self.addEnemy()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -69,28 +69,28 @@ class GameScene: SKScene {
         /* Called before each frame is rendered */
         print("current time: \(currentTime)")
         
-        if lastUpdateTime == -1{
-            lastUpdateTime = currentTime
-        } else {
-            let deltaTime = currentTime - lastUpdateTime
-            let deltaTimeInMilisecond = deltaTime * 1000
-            if deltaTimeInMilisecond > 100 { // fix enemy period speed here
-                self.enemyIntervalCount += 1
-                if self.enemyIntervalCount > 6 {
-                    self.enemyIntervalCount = 0
-                    addEnemy()
-                }
-//                count+=1
-//                if count==1{
-//                    bulletIntervalCount = 0
-//                    addBullet()
+//        if lastUpdateTime == -1{
+//            lastUpdateTime = currentTime
+//        } else {
+//            let deltaTime = currentTime - lastUpdateTime
+//            let deltaTimeInMilisecond = deltaTime * 1000
+//            if deltaTimeInMilisecond > 100 { // fix enemy period speed here
+//                self.enemyIntervalCount += 1
+//                if self.enemyIntervalCount > 6 {
+//                    self.enemyIntervalCount = 0
 //                    addEnemy()
-//                    lastTimeUpdate = currentTime
 //                }
-//                count=0
-                lastUpdateTime = currentTime
-            }
-        }
+////                count+=1
+////                if count==1{
+////                    bulletIntervalCount = 0
+////                    addBullet()
+////                    addEnemy()
+////                    lastTimeUpdate = currentTime
+////                }
+////                count=0
+//                lastUpdateTime = currentTime
+//            }
+//        }
         
         for (bulletIndex, bullet) in bullets.enumerate(){
             for (enemyIndex, enemy) in enemies.enumerate(){
@@ -158,7 +158,7 @@ class GameScene: SKScene {
             // 6
             self.enemies.append(enemy)
         }
-        let periodEnemy = SKAction.sequence([enemyAppear, SKAction.waitForDuration(3)])
+        let periodEnemy = SKAction.sequence([enemyAppear, SKAction.waitForDuration(2)])
         self.runAction(SKAction.repeatActionForever(periodEnemy))
     }
     
